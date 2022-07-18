@@ -8,21 +8,19 @@ class HolidayRef(models.Model):
     
 class Continents(models.Model):
     continents = models.CharField(max_length =100)
-    ref = models.ManyToManyField(HolidayRef)
     
     def __str__(self):
         return self.continents
 
 class Countries(models.Model):
-    ref = models.ManyToManyField(HolidayRef)
     continents = models.ManyToManyField(Continents)
-    countrie = models.CharField(max_length =100)
+    countries = models.CharField(max_length =100)
 
     def __str__(self):
-        return self.continents, self.countrie
+        return self.continents, self.countries
 
 class Location(models.Model):
-    ref = models.ManyToManyField(Countries)
+    Location = models.ManyToManyField(Countries)
 
 class TypeHoliday(models.Model):
     ref = models.ManyToManyField(HolidayRef)
@@ -38,11 +36,11 @@ class Holiday(models.Model):
     ref = models.ManyToManyField(HolidayRef)
     type_hol = models.ManyToManyField(TypeHoliday)
     loaction = models.ManyToManyField(Location)
-    HotelName = models.CharField(max_length =100)
-    Area = models.CharField(max_length =100)
-    StarRating = models.CharField(max_length =100)
-    Location = models.CharField(max_length =100)
-    PricePerPerNight = models.CharField(max_length =100)
+    hotelName = models.CharField(max_length =100)
+    area = models.CharField(max_length =100)
+    atarRating = models.CharField(max_length =100)
+    area = models.CharField(max_length =100)
+    pricePerPerNight = models.CharField(max_length =100)
     
     def __str__(self):
-        return(f"{self.HotelName}, {self.Area}, {self.Location}, {self.PricePerPerNight}")
+        return(f"{self.hotelName}, {self.area}, {self.area}, {self.pricePerPerNight}")
