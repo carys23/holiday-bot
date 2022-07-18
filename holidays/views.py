@@ -12,13 +12,15 @@ def login(request):
 def get_countries_by_continent(continent):
     return Countries.objects.filter(continents__continents=continent)
 
+def get_holiday_by_type_country_and_type(country, type):
+    return Holiday.objects.filter(location__location__countries=country, type_hol__type_hol=type)
+
 def continent(request):
     holiday = {"continent": Continents.objects.all()}
     return render (request, 'continent.html', holiday )
 
 def countries(request):
     holiday = {"countries": Countries.objects.all()}
-
     return render (request, 'countries.html', holiday )
 
 def australia(request):
@@ -43,17 +45,16 @@ def europe(request):
 
 def africa(request):
     holiday = {"countries": get_countries_by_continent('Africa')}
-    return render (request, 'africa.html', holiday )
+    return render (request, 'africa.html', holiday)
 
-def TypeHoliday(request):
-    if request.method == 'POST':
-        form = TypeHoliday(request.POST or None)
+def type_hol(request, country):
+    return render (request, 'type_hol.html', { 'country': country, 'holidays': TypeHoliday.objects.all()} )
+    
 
-        if form.is_valid():
-            form.save()
-            holiday = {"TypeHoliday": TypeHoliday.objects.all()}
-            return render (request, 'hol-type.html', holiday )
 
-    else:
-        holiday = {"TypeHoliday": TypeHoliday.objects.all()}
-        return render (request, 'hol-type.html', holiday )
+def typeHoliday(request, country, type):    
+    holiday = {"holidays": get_holiday_by_type_country_and_type(country, type)}
+    return render(request, 'holidays.html', holiday)
+
+
+

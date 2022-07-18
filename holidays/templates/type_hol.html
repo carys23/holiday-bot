@@ -19,18 +19,22 @@
 <div class="bot" id="bot">
     <div class="container" id="container">
         <img id="bot-image" class="bot-image" src="{% static 'monkey.png' %}">
-        <h3>What country?</h3>
-{% for data in countries %}
-<button mat-button-update mat-raised-button color="primary" class="login" id="btn2" >{{ data }}</button>
-{% endfor %}
-<!-- if prssed -->
-<!-- <button mat-button-update mat-raised-button color="primary" class="btn2" id="btn2">
-  
-</button>
-<div class="div_icons"> <a id='link' href="{% url 'type_hol' %}">
-        
-</div> -->
+        <h3>What type holiday are you looking for?</h3>
+    
+    
+    
+            {% for data in holidays %}
+            
+            <button mat-button-update mat-raised-button color="primary" class="login" id="btn2" >
+                <div class="div_icons"> <a id='link' href="{% url 'typeHoliday' country data %}">{{ data }}</div>
+          
+            </button>
 
+            
+            
+            {% endfor %}
+            
+            
         <!-- container div -->
     </div>
     <!-- bot div  -->

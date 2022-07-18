@@ -19,17 +19,11 @@
 <div class="bot" id="bot">
     <div class="container" id="container">
         <img id="bot-image" class="bot-image" src="{% static 'monkey.png' %}">
-        <h3>What typy holiday are you looking for?</h3>
-        <input class="form" type="button" name="type_hol">
-        <form class="form" method="POST">
-            {% csrf_token %}
-        <button type="submit">             </button>
-        
-            <input class="btn" >
+        <h3>Please pick a holiday</h3>
+{% for data in holidays %}
+<button mat-button-update mat-raised-button color="primary" class="login" id="btn2" >{{ data }}</button>
+{% endfor %}
 
-
-        </form>
-        {{ TypeHoliday }}
 
         <!-- container div -->
     </div>
