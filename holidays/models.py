@@ -1,10 +1,8 @@
 # from pyexpat import model
+from tkinter import CASCADE
 from django.db import models
 
 from django import forms
-
-class HolidayRef(models.Model):
-    ref = models.IntegerField()
     
 class Continents(models.Model):
     continents = models.CharField(max_length =100)
@@ -13,35 +11,37 @@ class Continents(models.Model):
         return self.continents
 
 class Countries(models.Model):
-    continents = models.ManyToManyField(Continents)
+    continents = models.ForeignKey(Continents, on_delete=models.CASCADE)#,  default='')
     countries = models.CharField(max_length =100)
 
     def __str__(self):
         return (f' location :  {self.countries} ')
 
 class Location(models.Model):
-    Location = models.ManyToManyField(Countries)
+    location = models.ForeignKey(Countries, on_delete=models.CASCADE)#,  default='')
     def __str__(self):
-        return (f' location : {self.Location}')
+        return (f' location : {self.location}')
+
 
 class TypeHoliday(models.Model):
-    ref = models.ManyToManyField(HolidayRef)
-    loaction = models.ManyToManyField(Location)
     type_hol = models.CharField(max_length =100)
-    temp = models.CharField(max_length =100)
 
     def __str__(self):
-        return (f'types is hoildays {self.type_hol} location : {self.loaction}')
+        return self.type_hol
 
+
+class Temperature(models.Model):
+    temperature = models.CharField(max_length =100)
+
+    def __str__(self):
+        return self.temperature
 
 class Holiday(models.Model):
-    ref = models.ManyToManyField(HolidayRef)
-    type_hol = models.ManyToManyField(TypeHoliday)
-    loaction = models.ManyToManyField(Location)
+    type_hol = models.ForeignKey(TypeHoliday, on_delete=models.CASCADE)#,  default='')
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)#, default='')
     hotelName = models.CharField(max_length =100)
     area = models.CharField(max_length =100)
-    atarRating = models.CharField(max_length =100)
-    area = models.CharField(max_length =100)
+    satarRating = models.CharField(max_length =100)
     pricePerPerNight = models.CharField(max_length =100)
     
     def __str__(self):

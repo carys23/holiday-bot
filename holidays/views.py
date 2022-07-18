@@ -1,6 +1,5 @@
 from typing import Type
 from django.shortcuts import render
-from .forms import ListForm
 # Create your views here.
 from django.http import HttpResponse
 
