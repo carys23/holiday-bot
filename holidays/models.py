@@ -17,10 +17,12 @@ class Countries(models.Model):
     countries = models.CharField(max_length =100)
 
     def __str__(self):
-        return self.continents, self.countries
+        return (f' location :  {self.countries} ')
 
 class Location(models.Model):
     Location = models.ManyToManyField(Countries)
+    def __str__(self):
+        return (f' location : {self.Location}')
 
 class TypeHoliday(models.Model):
     ref = models.ManyToManyField(HolidayRef)
@@ -29,7 +31,7 @@ class TypeHoliday(models.Model):
     temp = models.CharField(max_length =100)
 
     def __str__(self):
-        return (f'types is hoildays {self.type_hol} ')
+        return (f'types is hoildays {self.type_hol} location : {self.loaction}')
 
 
 class Holiday(models.Model):
