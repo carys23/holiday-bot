@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+
+
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="bot" id="bot">
+    <div class="container" id="container">
+        <img id="bot-image" class="bot-image" src="{% static 'monkey.png' %}">
+        <h3>What typy holiday are you looking for?</h3>
+        <input class="form" type="button" name="type_hol">
+        <form class="form" method="POST">
+            {% csrf_token %}
+        <button type="submit">             </button>
+        
+            <input class="btn" >
+
+
+        </form>
+        {{ TypeHoliday }}
+
+        <!-- container div -->
+    </div>
+    <!-- bot div  -->
+</div>
+
+{% endblock %}

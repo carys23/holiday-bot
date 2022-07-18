@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+
+
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="bot" id="bot">
+    <div class="container" id="container">
+        <img id="bot-image" class="bot-image" src="{% static 'monkey.png' %}">
+        <h3>What country?</h3>
+{% for data in countries %}
+<button mat-button-update mat-raised-button color="primary" class="login" id="btn2" >{{ data }}</button>
+{% endfor %}
+
+
+        <!-- container div -->
+    </div>
+    <!-- bot div  -->
+</div>
+
+{% endblock %}
+
+
