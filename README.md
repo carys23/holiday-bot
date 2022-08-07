@@ -4,6 +4,7 @@
     return Countries.objects.filter(continents__continents=continent)'
 #### gets the arugument from the name within the models and the name in models from the foreignKey
 <br>
+<br>
 
 * def australia(request):
     holiday = {"countries": get_countries_by_continent('Australia')}
@@ -11,10 +12,12 @@
 
 #### Then passes through the def get_countries_by_continent(continent) arugument 
 <br>
+<br>
 
 * def type_hol(request, country):
     return render (request, 'type_hol.html', { 'country': country, 'holidays': TypeHoliday.objects.all()} )'
 #### agrument of the country from url.py what button is clicked
+<br>
 <br>
 
 * def typeHoliday(request, country, type_hol):    
