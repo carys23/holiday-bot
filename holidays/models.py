@@ -1,5 +1,5 @@
 # from pyexpat import model
-from tkinter import CASCADE
+
 from django.db import models
 
 from django import forms

@@ -12,8 +12,8 @@ def login(request):
 def get_countries_by_continent(continent):
     return Countries.objects.filter(continents__continents=continent)
 
-def get_holiday_by_type_country_and_type(country, type):
-    return Holiday.objects.filter(location__location__countries=country, type_hol__type_hol=type)
+def get_holiday_by_type_country_and_type(country, type_hol):
+    return Holiday.objects.filter(location__location__countries=country, type_hol__type_hol=type_hol)
 
 def continent(request):
     holiday = {"continent": Continents.objects.all()}
@@ -50,11 +50,6 @@ def africa(request):
 def type_hol(request, country):
     return render (request, 'type_hol.html', { 'country': country, 'holidays': TypeHoliday.objects.all()} )
     
-
-
-def typeHoliday(request, country, type):    
-    holiday = {"holidays": get_holiday_by_type_country_and_type(country, type)}
+def typeHoliday(request, country, type_hol):    
+    holiday = {"holidays": get_holiday_by_type_country_and_type(country, type_hol)}
     return render(request, 'holidays.html', holiday)
-
-
-
